@@ -1,0 +1,121 @@
+\documentclass{article}
+
+%\usepackage[utf8]{inputenc}		% LuaTex do not need this
+%\usepackage[T1]{fontenc}			% LuaTex do not need this
+\usepackage{fontspec}				% LuaTex need this
+\usepackage{lmodern}
+\usepackage{comment}
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+	\graphicspath{ {Bilder/} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% https://tex.stackexchange.com/questions/82993/how-to-change-the-name-of-document-elements-like-figure-contents-bibliogr
+% https://tex.stackexchange.com/questions/186946/changing-the-autoref-name-for-chapter
+%
+%\usepackage[ngerman]{babel}		% LuaTex do not need this
+\usepackage{polyglossia}
+	\setdefaultlanguage[spelling=new]{german}
+	\addto\captionsgerman{
+		\renewcommand{\figurename}{Abbildung}
+		\renewcommand{\figureautorefname}{Abbildung}
+		\renewcommand{\equationautorefname}{Gleichung}
+	}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% LATEX Mathematical Symbols
+% https://reu.dimacs.rutgers.edu/Symbols.pdf
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics
+%
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% algorithm2e.sty — package for algorithms
+% http://ctan.mirrors.hoobly.com/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf
+%
+\usepackage[
+	ngerman,
+	linesnumbered,
+	boxed,
+%	algochapter,
+%	rightnl,
+%	figure,
+]{algorithm2e}
+	% Then you can adjust the spacing between the body of the algorithm and its
+	% caption through the command \SetAlCapSkip.
+	\SetAlCapSkip{1em}
+	% Restyling the caption in an algorithm created with algorithm2e
+	% https://tex.stackexchange.com/questions/112294/restyling-the-caption-in-an-algorithm-created-with-algorithm2e/112295
+	\SetAlgoCaptionSeparator{:}
+	\renewcommand\AlCapFnt{\normalfont}
+	% Algorithm2e modify line numbers
+	% https://tex.stackexchange.com/questions/100145/algorithm2e-modify-line-numbers
+	\SetNlSty{textbf}{}{:}
+	% Sets the value of the space between the line numbers and the text, by default 1em.
+	\SetNlSkip{2em}
+	%\SetAlgoRefName{QXY}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TikZ
+%
+\usepackage{tikz}
+	\usetikzlibrary{arrows.meta,graphs,shapes}
+\usepackage{tkz-berge}
+\usepackage{tkz-graph}
+\makeatletter
+\pgfmathdeclarefunction{alpha}{1}{%
+	\pgfmathint@{#1}%
+	\edef\pgfmathresult{\pgffor@alpha{\pgfmathresult}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% https://www.dante.de/events/Archiv/dante2012/Programm/Vortraege/vortrag-ferber.pdf
+%
+\usepackage[
+	breaklinks,
+	colorlinks,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black,
+	pdfencoding=auto,
+]{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{subcaption}
+	\captionsetup{subrefformat=parens}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+\title{Technische Informatik\\ Lösungen zu der Übung 5}
+
+\author{
+	Albert Kasdorf\and
+	Georg Braun
+}
+\date{22.05.2018}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+\begin{document}
+
+\maketitle
+
+
+\end{document}
