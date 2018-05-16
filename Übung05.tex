@@ -32,6 +32,7 @@
 %
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{amsmath}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -93,6 +94,13 @@
 \usepackage{float}
 \usepackage{subcaption}
 	\captionsetup{subrefformat=parens}
+\usepackage{rail}
+
+%
+% Längenangabe für die Einrückung der ersten Zeile eines neuen Absatzes.	
+% https://golatex.de/wiki/%5Cparindent
+%
+\setlength{\parindent}{0mm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,6 +124,76 @@
 \begin{document}
 
 \maketitle
+
+\section*{Aufgabe 39 (CFGs)}
+Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das Wort
+
+\begin{equation*}
+	\text{w = IDENT "=" NUMBER "*" IDENT "*" NUMBER ";".}
+\end{equation*}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{Compilerbau_Abbildung_11_18}
+	\caption{Wdh.: Kontextfreie Grammatiken}
+	\label{fig:compilerbau_abbildung_11_18}
+\end{figure}
+
+a) Geben Sie ein Syntaxdiagramm an, das die durch GSE erzeugte Sprache beschreibt.
+
+\begin{rail}
+	statement : 'IDENT' '=' exp ';'
+\end{rail}
+
+
+\begin{rail}
+	exp : exp '*' exp | 'NUMBER' | 'IDENT'
+\end{rail}
+
+
+b) Geben Sie eine Linksableitung von w an.
+
+
+c) Geben Sie eine Rechtsableitung von w an.
+
+
+\section*{Aufgabe 40 (Mehrdeutige CFGs)}
+Geben Sie eine CFG und ein Wort w an, so dass es für das Wort w zwei verschiedene Linksableitungen zu w gibt und beweisen Sie Ihre Aussage durch Angabe der beiden Linksableitungen zu w.
+
+Zeichnen Sie zu jeder Linksableitung den zugehörigen Syntaxbaum.
+
+
+\section*{Aufgabe 41 (CNF)}
+
+Geben Sie eine Typ 2-Grammatik an, die die folgende Sprache erzeugt und transformieren Sie
+diese in CNF:
+
+\begin{equation*}
+	\left\{a^n b^n c^m \mid n, m \geq 1\right\}.
+\end{equation*}
+
+
+\section*{Aufgabe 42 (Top-Down-Analyserechnung)}
+
+a) Geben Sie eine CFG an, die die Menge der nichtleeren Palindrome (Wort gleich dem gespiegelten Wort) über dem Alphabet $\Sigma = \left\{a, b, c\right\}$ erzeugt. Bsp.: $w=abccba$ ist in der zu erzeugenden Menge.
+
+b) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolgreich ist.
+
+c) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolglos abbricht.
+
+
+\section*{Aufgabe 43 (Durchschnitt Typ 2-Sprachen)}
+
+Beweisen oder widerlegen Sie, dass der Schnitt von L 1 und L 2 aus Aufgabe 37 und Aufgabe 38 Typ 2 ist.
+
+
+Was bedeutet das für die Abschlusseigenschaften der Typ 2-Sprachen?
+
+
+\section*{Aufgabe 44 (Typ 1-Sprache)}
+
+Zeigen Sie, dass die Sprache $L = \left\{a^m b^m c^m \mid m \geq 1\right\}$ vom Typ 1 ist.
 
 
 \end{document}
