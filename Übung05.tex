@@ -132,7 +132,6 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 	\text{w = IDENT "=" NUMBER "*" IDENT "*" NUMBER ";".}
 \end{equation*}
 
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\linewidth]{Compilerbau_Abbildung_11_18}
@@ -145,7 +144,6 @@ a) Geben Sie ein Syntaxdiagramm an, das die durch GSE erzeugte Sprache beschreib
 \begin{rail}
 	statement : 'IDENT' '=' exp ';'
 \end{rail}
-
 
 \begin{rail}
 	exp : exp '*' exp | 'NUMBER' | 'IDENT'
