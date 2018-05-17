@@ -95,6 +95,7 @@
 \usepackage{subcaption}
 	\captionsetup{subrefformat=parens}
 \usepackage{rail}
+\usepackage{tabto}
 
 %
 % Längenangabe für die Einrückung der ersten Zeile eines neuen Absatzes.	
@@ -170,7 +171,7 @@ Geben Sie eine Typ 2-Grammatik an, die die folgende Sprache erzeugt und transfor
 diese in CNF:
 
 Typ 2-Grammatik:
-$G = ({}, {}, S, P)$ mit
+$G = (\{S, C, D\}, \{a, b, c\}, S, P)$ mit
 \begin{equation}
 \begin{split}
 P = \{ \\\
@@ -183,8 +184,10 @@ P = \{ \\\
 \end{equation}
 
 Nun die Umformung in CNF:
-%TODO Noch prüfen
 Für die Umformung die nicht alleinstehende Terminale in Variablen überführen. Werden mehr als zwei Nichtterminale auf der rechten Regelseite vorkommen werden diese durch eine neue Variable ersetzt.
+
+Typ 2-Grammatik in CNF:
+$G = (\{S, C, X, D, V_a, V_b, V_c\}, \{a, b, c\}, S, P)$ mit
 \begin{equation}
 \begin{split}
 P = \{ \\\
@@ -205,9 +208,50 @@ P = \{ \\\
 
 a) Geben Sie eine CFG an, die die Menge der nichtleeren Palindrome (Wort gleich dem gespiegelten Wort) über dem Alphabet $\Sigma = \left\{a, b, c\right\}$ erzeugt. Bsp.: $w=abccba$ ist in der zu erzeugenden Menge.
 
+$G = (\{S\}, \{a, b, c\}, S, P)$ mit
+\begin{equation}
+\begin{split}
+P = \{ \\\
+&\quad (1) \quad S \rightarrow aSa, \\\ 
+&\quad (2) \quad S \rightarrow bSb, \\\
+&\quad (3) \quad S \rightarrow cSc, \\\
+&\quad (4) \quad S \rightarrow aa, \\\
+&\quad (5) \quad S \rightarrow bb, \\\
+&\quad (6) \quad S \rightarrow cc, \\\
+&\quad (7) \quad S \rightarrow a, \\\
+&\quad (8) \quad S \rightarrow b, \\\
+&\quad (9) \quad S \rightarrow c \} \\\
+\end{split}
+\end{equation}
+
 b) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolgreich ist.
 
+\begin{equation}
+\begin{split}
+&\Rightarrow(z, abccba, S, ) \\\ 
+&\Rightarrow(z, abccba, aSa, 1) \\\ 
+&\Rightarrow(z, bccba, Sa, 1) \\\ 
+&\Rightarrow(z, bccba, bSba, 1 2) \\\ 
+&\Rightarrow(z, ccba, Sba, 1 2) \\\
+&\Rightarrow(z, ccba, ccba, 1 2 6) \\\
+&\Rightarrow(z, cba, cba, 1 2 6) \\\
+&\Rightarrow(z, ba, ba, 1 2 6) \\\
+&\Rightarrow(z, a, a, 1 2 6) \\\
+&\Rightarrow(z, , , 1 2 6) \\\
+\end{split}
+\end{equation}
+
+
 c) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolglos abbricht.
+
+\begin{equation}
+\begin{split}
+&\Rightarrow(z, abccba, S, ) \\\ 
+&\Rightarrow(z, abccba, S, 9) \\\ 
+&\Rightarrow(z, abccba, c, 9) \\\ 
+&c \neq a
+\end{split}
+\end{equation}
 
 
 \section*{Aufgabe 43 (Durchschnitt Typ 2-Sprachen)}
