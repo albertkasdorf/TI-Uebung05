@@ -66,7 +66,7 @@
 % TikZ
 %
 \usepackage{tikz}
-	\usetikzlibrary{arrows.meta,graphs,shapes}
+	\usetikzlibrary{arrows.meta,graphs,shapes,trees}
 \usepackage{tkz-berge}
 \usepackage{tkz-graph}
 \makeatletter
@@ -198,9 +198,85 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 
 
 \section*{Aufgabe 40 (Mehrdeutige CFGs)}
-Geben Sie eine CFG und ein Wort w an, so dass es für das Wort w zwei verschiedene Linksableitungen zu w gibt und beweisen Sie Ihre Aussage durch Angabe der beiden Linksableitungen zu w.
 
-Zeichnen Sie zu jeder Linksableitung den zugehörigen Syntaxbaum.
+\subsection*{a) Geben Sie eine CFG und ein Wort w an, so dass es für das Wort w zwei verschiedene Linksableitungen zu w gibt und beweisen Sie Ihre Aussage durch Angabe der beiden Linksableitungen zu w.}
+
+\begin{center}
+	%	\begin{tabular}{|l|r|c|l|r|l|c|}
+	\begin{tabular}{lrclrlc}
+		& GSE & = & \multicolumn{4}{l}{(V, $\Sigma$, S, R)} \\
+		Variablenmenge & V & = & \multicolumn{4}{l}{\{<Stmt>, <Exp>\}} \\
+		Terminalmenge & $\Sigma$ & = & \multicolumn{4}{l}{\{IDENT, NUMBER, "=", ";", "*"\}} \\
+		Startsymbol & S & = & \multicolumn{4}{l}{\{<Stmt>\}} \\
+		Regelmenge & R & = & \{ \\
+		& & & & <Stmt> & $\rightarrow$ IDENT "=" <Exp> ";" & (1) \\
+		& & & & <Exp> & $\rightarrow$ <Exp> "*" <Exp> & (2) \\
+		& & & & <Exp> & $\rightarrow$ NUMBER & (3) \\
+		& & & & <Exp> & $\rightarrow$ IDENT & (4) \\
+		& & & \} \\
+		\\
+		& w & = & \multicolumn{4}{l}{IDENT "=" NUMBER "*" IDENT "*" NUMBER ";"} \\
+	\end{tabular}
+\end{center}
+
+\subsection*{b) Zeichnen Sie zu jeder Linksableitung den zugehörigen Syntaxbaum.}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Regel: 123234}[.49\linewidth]
+	{
+		\begin{tikzpicture}[scale=0.90]
+		\node{<Stmt>}
+		child{node{IDENT}}
+		child{node{"="}}
+		child{node{<Exp>}
+			child{node{<Exp>}
+				child{node{NUMBER}}
+				child[missing]
+			}
+			child{node{"*"}}
+			child{node{<Exp>}
+				child{node{<Exp>}
+					child{node{IDENT}}
+				}
+				child{node{"*"}}
+				child{node{<Exp>}
+					child{node{NUMBER}}
+				}
+			}
+		}
+		child{node{";"}}
+		;
+		\end{tikzpicture}
+	}
+	\hfill
+	\subcaptionbox{Regel: 122343}[.49\linewidth]
+	{
+		\begin{tikzpicture}[scale=0.90]
+		\node{<Stmt>}
+		child{node{IDENT}}
+		child{node{"="}}
+		child{node{<Exp>}
+			child{node{<Exp>}
+				child{node{<Exp>}
+					child{node{NUMBER}}
+				}
+				child{node{"*"}}
+				child{node{<Exp>}
+					child{node{IDENT}}
+				}
+			}
+			child{node{"*"}}
+			child{node{<Exp>}
+				child[missing]
+				child{node{NUMBER}}
+			}
+		}
+		child{node{";"}}
+		;
+		\end{tikzpicture}
+	}
+\end{figure}
 
 
 \section*{Aufgabe 41 (CNF)}
