@@ -367,15 +367,45 @@ c) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG
 \end{split}
 \end{equation}
 
-
+%\newpage
 \section*{Aufgabe 43 (Durchschnitt Typ 2-Sprachen)}
 
-Beweisen oder widerlegen Sie, dass der Schnitt von L 1 und L 2 aus Aufgabe 37 und Aufgabe 38 Typ 2 ist.
+\subsection*{a) Beweisen oder widerlegen Sie, dass der Schnitt von $L_1$ und $L_2$, aus Aufgabe 37 und 38, vom Typ 2 ist.}
+
+\begin{align}
+	L_1 &= \{a^n b^n c^m \mid n, m > 0\} \nonumber\\
+	L_2 &= \{a^n b^m c^m \mid n, m > 0\} \nonumber
+\end{align}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+		\hline
+		$n,m$ & $1,1$ & $1,2$ & $2,1$ & $2,2$ & $2,3$ & $3,2$ & $3,3$ & $\cdots$ \\
+		\hline
+		$L_1$ & abc & ab\,cc & aabb\,c & aabbcc & aabb\,ccc & aaabbb\,cc & aaabbbccc & $\cdots$ \\
+		%\hline
+		$L_2$ & abc & a\,bbcc & aa\,bc & aabbcc & aa\,bbbccc & aaa\,bbcc & aaabbbccc & $\cdots$ \\
+		\hline
+	\end{tabular}
+	\caption{Bildung einiger Wörter mit der Sprache $L_1$ und $L_2$.}
+	\label{tab:some_words_of_language_one_and_two}
+\end{table}
+
+Beweis durch Angabe eines Gegenbeispiels: Aus der \autoref{tab:some_words_of_language_one_and_two} kann entnommen werden, dass beide Sprachen die selben Wörter erzeugen, wenn gilt $n=m$. Somit ergibt sich aus dem Schnitt der beiden Sprachen die folgende Sprache:
+
+\begin{align}
+L_1 \cap L_2 &= \{a^n b^n c^n \mid n > 0\} \nonumber
+\end{align}
+
+Mit Hilfe des Pumping Lemmas kann nachgewiesen werden, dass der Schnitt nicht mehr vom Typ 2 ist.
+
+\subsection*{b) Was bedeutet das für die Abschlusseigenschaften der Typ 2-Sprachen?}
+
+Der Schnitt zweier Typ 2-Sprachen ist also nicht zwingend wieder vom Typ 2.
 
 
-Was bedeutet das für die Abschlusseigenschaften der Typ 2-Sprachen?
-
-
+%\newpage
 \section*{Aufgabe 44 (Typ 1-Sprache)}
 
 Zeigen Sie, dass die Sprache $L = \left\{a^m b^m c^m \mid m \geq 1\right\}$ vom Typ 1 ist.
