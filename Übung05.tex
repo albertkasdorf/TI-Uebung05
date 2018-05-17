@@ -143,6 +143,7 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 	\label{fig:compilerbau_abbildung_11_18}
 \end{figure}
 
+\newpage
 \subsection*{a) Geben Sie ein Syntaxdiagramm an, das die durch GSE erzeugte Sprache beschreibt.}
 
 \begin{rail}
@@ -165,7 +166,9 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 		& & & & <Exp> & $\rightarrow$ <Exp> "*" <Exp> & (2) \\
 		& & & & <Exp> & $\rightarrow$ NUMBER & (3) \\
 		& & & & <Exp> & $\rightarrow$ IDENT & (4) \\
-		& & & \}
+		& & & \} \\
+		\\
+		& w & = & \multicolumn{4}{l}{IDENT "=" NUMBER "*" IDENT "*" NUMBER ";"}
 	\end{tabular}
 \end{center}
 
@@ -216,7 +219,7 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 		& & & & <Exp> & $\rightarrow$ IDENT & (4) \\
 		& & & \} \\
 		\\
-		& w & = & \multicolumn{4}{l}{IDENT "=" NUMBER "*" IDENT "*" NUMBER ";"} \\
+		& w & = & \multicolumn{4}{l}{IDENT "=" NUMBER "*" IDENT "*" NUMBER ";"}
 	\end{tabular}
 \end{center}
 
@@ -280,10 +283,10 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 \end{figure}
 
 
+\newpage
 \section*{Aufgabe 41 (CNF)}
 
-Geben Sie eine Typ 2-Grammatik an, die die folgende Sprache erzeugt und transformieren Sie
-diese in CNF:
+Geben Sie eine Typ 2-Grammatik an, die die folgende Sprache erzeugt und transformieren Sie diese in CNF: $\{a^n b^n c^n \mid n,m \ge 1\}$.
 
 Typ 2-Grammatik:
 $G = (\{S, C, D\}, \{a, b, c\}, S, P)$ mit
@@ -319,9 +322,10 @@ P = \{ \\\
 \end{equation}
 
 
+\newpage
 \section*{Aufgabe 42 (Top-Down-Analyserechnung)}
 
-a) Geben Sie eine CFG an, die die Menge der nichtleeren Palindrome (Wort gleich dem gespiegelten Wort) über dem Alphabet $\Sigma = \left\{a, b, c\right\}$ erzeugt. Bsp.: $w=abccba$ ist in der zu erzeugenden Menge.
+\subsection*{a) Geben Sie eine CFG an, die die Menge der nichtleeren Palindrome (Wort gleich dem gespiegelten Wort) über dem Alphabet $\Sigma = \left\{a, b, c\right\}$ erzeugt. Bsp.: $w=abccba$ ist in der zu erzeugenden Menge.}
 
 $G = (\{S\}, \{a, b, c\}, S, P)$ mit
 \begin{equation}
@@ -339,7 +343,7 @@ P = \{ \\\
 \end{split}
 \end{equation}
 
-b) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolgreich ist.
+\subsection*{b) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolgreich ist.}
 
 \begin{equation}
 \begin{split}
@@ -357,7 +361,7 @@ b) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG
 \end{equation}
 
 
-c) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolglos abbricht.
+\subsection*{c) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG aus Teil a) für das Wort $w=abccba$ an, die erfolglos abbricht.}
 
 \begin{equation}
 \begin{split}
@@ -368,7 +372,7 @@ c) Geben Sie eine Top-Down Analyserechnung des Top-Down Analyseautomaten zur CFG
 \end{split}
 \end{equation}
 
-%\newpage
+\newpage
 \section*{Aufgabe 43 (Durchschnitt Typ 2-Sprachen)}
 
 \subsection*{a) Beweisen oder widerlegen Sie, dass der Schnitt von $L_1$ und $L_2$, aus Aufgabe 37 und 38, vom Typ 2 ist.}
@@ -406,10 +410,10 @@ Mit Hilfe des Pumping Lemmas kann nachgewiesen werden, dass der Schnitt nicht me
 Der Schnitt zweier Typ 2-Sprachen ist also nicht zwingend wieder vom Typ 2.
 
 
-%\newpage
+\newpage
 \section*{Aufgabe 44 (Typ 1-Sprache)}
 
-Zeigen Sie, dass die Sprache $L = \left\{a^m b^m c^m \mid m \geq 1\right\}$ vom Typ 1 ist.
+\subsection*{Zeigen Sie, dass die Sprache $L = \left\{a^m b^m c^m \mid m \geq 1\right\}$ vom Typ 1 ist.}
 
 Ziel: Eine Grammatik von Typ 1 finden.
 $G = (\{S\}, \{a, b, c\}, S, P)$ mit
