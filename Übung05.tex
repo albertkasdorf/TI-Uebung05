@@ -95,6 +95,8 @@
 \usepackage{subcaption}
 	\captionsetup{subrefformat=parens}
 \usepackage{rail}
+	\railalias{exp}{<Exp>}
+	\railalias{stmt}{<Stmt>}
 \usepackage{tabto}
 
 %
@@ -140,21 +142,59 @@ Betrachten Sie die CFG GSE in \autoref{fig:compilerbau_abbildung_11_18} und das 
 	\label{fig:compilerbau_abbildung_11_18}
 \end{figure}
 
-a) Geben Sie ein Syntaxdiagramm an, das die durch GSE erzeugte Sprache beschreibt.
+\subsection*{a) Geben Sie ein Syntaxdiagramm an, das die durch GSE erzeugte Sprache beschreibt.}
 
 \begin{rail}
-	statement : 'IDENT' '=' exp ';'
+	stmt : 'IDENT' '=' exp ';'
 \end{rail}
 
 \begin{rail}
 	exp : exp '*' exp | 'NUMBER' | 'IDENT'
 \end{rail}
 
+\begin{center}
+%	\begin{tabular}{|l|r|c|l|r|l|c|}
+	\begin{tabular}{lrclrlc}
+		& GSE & = & \multicolumn{4}{l}{(V, $\Sigma$, S, R)} \\
+		Variablenmenge & V & = & \multicolumn{4}{l}{\{<Stmt>, <Exp>\}} \\
+		Terminalmenge & $\Sigma$ & = & \multicolumn{4}{l}{\{IDENT, NUMBER, "=", ";", "*"\}} \\
+		Startsymbol & S & = & \multicolumn{4}{l}{\{<Stmt>\}} \\
+		Regelmenge & R & = & \{ \\
+		& & & & <Stmt> & $\rightarrow$ IDENT "=" <Exp> ";" & (1) \\
+		& & & & <Exp> & $\rightarrow$ <Exp> "*" <Exp> & (2) \\
+		& & & & <Exp> & $\rightarrow$ NUMBER & (3) \\
+		& & & & <Exp> & $\rightarrow$ IDENT & (4) \\
+		& & & \}
+	\end{tabular}
+\end{center}
 
-b) Geben Sie eine Linksableitung von w an.
+\subsection*{b) Geben Sie eine Linksableitung von w an.}
 
+\begin{center}
+	\begin{tabular}{rll}
+		<Stmt> & & Regel \\
+		=l> & IDENT "=" <Exp> ";" & (1) \\
+		=l> & IDENT "=" <Exp> "*" <Exp> ";" & (2)\\
+		=l> & IDENT "=" NUMBER "*" <Exp> ";" & (3)\\
+		=l> & IDENT "=" NUMBER "*" <Exp> "*" <Exp> ";" & (2)\\
+		=l> & IDENT "=" NUMBER "*" IDENT "*" <Exp> ";" & (4)\\
+		=l> & IDENT "=" NUMBER "*" IDENT "*" NUMBER ";" & (3)\\
+	\end{tabular}
+\end{center}
 
-c) Geben Sie eine Rechtsableitung von w an.
+\subsection*{c) Geben Sie eine Rechtsableitung von w an.}
+
+\begin{center}
+	\begin{tabular}{rll}
+		<Stmt> & & Regel \\
+		=r> & IDENT "=" <Exp> ";" & (1) \\
+		=r> & IDENT "=" <Exp> "*" <Exp> ";" & (2)\\
+		=r> & IDENT "=" <Exp> "*" NUMBER ";" & (3)\\
+		=r> & IDENT "=" <Exp> "*" <Exp> "*" NUMBER ";" & (2)\\
+		=r> & IDENT "=" <Exp> "*" IDENT "*" NUMBER ";" & (4)\\
+		=r> & IDENT "=" NUMBER "*" IDENT "*" NUMBER ";" & (3)\\
+	\end{tabular}
+\end{center}
 
 
 \section*{Aufgabe 40 (Mehrdeutige CFGs)}
