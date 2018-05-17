@@ -183,7 +183,22 @@ P = \{ \\\
 \end{equation}
 
 Nun die Umformung in CNF:
-%TODO Umformung
+%TODO Noch prüfen
+Für die Umformung die nicht alleinstehende Terminale in Variablen überführen. Werden mehr als zwei Nichtterminale auf der rechten Regelseite vorkommen werden diese durch eine neue Variable ersetzt.
+\begin{equation}
+\begin{split}
+P = \{ \\\
+&S \rightarrow CD, \\
+&C \rightarrow XV_b, \\\
+&X \rightarrow V_aC, \\\
+&C \rightarrow V_aV_b, \\\
+&D \rightarrow V_cD, \\\
+&D \rightarrow c, \\\
+&V_a \rightarrow a, \\\
+&V_b \rightarrow b, \\\
+&V_c \rightarrow c \} \\\
+\end{split}
+\end{equation}
 
 
 \section*{Aufgabe 42 (Top-Down-Analyserechnung)}
