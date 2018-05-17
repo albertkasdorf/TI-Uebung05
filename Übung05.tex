@@ -380,5 +380,38 @@ Was bedeutet das für die Abschlusseigenschaften der Typ 2-Sprachen?
 
 Zeigen Sie, dass die Sprache $L = \left\{a^m b^m c^m \mid m \geq 1\right\}$ vom Typ 1 ist.
 
+Ziel: Eine Grammatik von Typ 1 finden.
+$G = (\{S\}, \{a, b, c\}, S, P)$ mit
+\begin{equation}
+\begin{split}
+P = \{ \\\
+&\quad (1) \quad S \rightarrow aSBC, \quad \text{; weitere Verschachtelung} \\\ 
+&\quad (2) \quad S \rightarrow aBC, \quad \text{;Ende der Generierung} \\\
+&\quad (3) \quad CB \rightarrow BC, \quad \text{;Variablen wieder in Reihenfolge bringen} \\\
+&\quad (4) \quad aB \rightarrow ab, \quad \text{;Übergung von a zu B} \\\
+&\quad (5) \quad bB \rightarrow bb, \quad \text{; Anpassung im B Bereich} \\\
+&\quad (6) \quad bC \rightarrow bc, \quad \text{; Übergang von b zu C} \\\
+&\quad (7) \quad cC \rightarrow cc \} \quad \text{; Anpassung im C Bereich} \\\
+\end{split}
+\end{equation}
+
+Ein Beispiel für das Wort $w=aaabbbccc$
+\begin{equation}
+\begin{split}
+&S \Rightarrow_1 aSBC \\\ 
+&\Rightarrow_1 aaSBCBC \\\ 
+&\Rightarrow_2 aaaBCBCBC \\\ 
+&\Rightarrow_3 aaaBBCCBC \\\ 
+&\Rightarrow_3 aaaBBCBCC \\\ 
+&\Rightarrow_3 aaaBBBCCC \\\ 
+&\Rightarrow_4 aaabBBCCC \\\ 
+&\Rightarrow_5 aaabbBCCC \\\
+&\Rightarrow_5 aaabbbCCC \\\ 
+&\Rightarrow_6 aaabbbcCC \\\ 
+&\Rightarrow_7 aaabbbccC \\\ 
+&\Rightarrow_7 aaabbbccc \\\ 
+\end{split}
+\end{equation}
+
 
 \end{document}
