@@ -169,9 +169,21 @@ Zeichnen Sie zu jeder Linksableitung den zugehörigen Syntaxbaum.
 Geben Sie eine Typ 2-Grammatik an, die die folgende Sprache erzeugt und transformieren Sie
 diese in CNF:
 
-\begin{equation*}
-	\left\{a^n b^n c^m \mid n, m \geq 1\right\}.
-\end{equation*}
+Typ 2-Grammatik:
+$G = ({}, {}, S, P)$ mit
+\begin{equation}
+\begin{split}
+P = \{ \\\
+&S \rightarrow CD, \\\
+&C \rightarrow aCb, \\\
+&C \rightarrow ab, \\\
+&D \rightarrow cD, \\\
+&D \rightarrow c \}
+\end{split}
+\end{equation}
+
+Nun die Umformung in CNF:
+%TODO Umformung
 
 
 \section*{Aufgabe 42 (Top-Down-Analyserechnung)}
